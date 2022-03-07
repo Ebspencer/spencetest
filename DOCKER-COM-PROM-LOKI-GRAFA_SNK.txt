@@ -1,0 +1,181 @@
+﻿version: "3"
+
+networks:
+  loki:
+
+services:
+  loki:
+    image: grafana/loki:2.4.2
+    volumes:
+      - /Users/emmanuel.egbuniwe/CBCS/Loki:/etc/loki
+    ports:
+      - "3200:3100"
+    restart: unless-stopped
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - loki
+
+  promtail:
+    image: grafana/promtail:2.4.2
+    volumes:
+      - /var/log:/var/log
+      - /Users/emmanuel.egbuniwe/CBCS/Promtail:/etc/promtail
+    restart: unless-stopped
+    command: -config.file=/etc/promtail/promtail-config.yml
+    networks:
+      - loki
+
+  grafana:
+    image: grafana/cbcs:latest
+    ports:
+      - "2000:3000"
+    networks:
+      - loki
+      
+  Database:
+    image:mysql3
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: ebspencer4000
+        ports: 
+            - 3306:3306  
+         
+  prometheus:
+    image: prom/cbcs
+    volumes:
+    - /Users/emmanuel.egbuniwe/CBCS/Prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+    command:
+    - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+    - 4540:9090       
+         
+         
+         
+         
+         
+         
+version: "3"
+networks:
+  loki:
+services:
+  loki:
+    image: grafana/loki:2.4.0
+    volumes:
+      - /Users/emmanuel.egbuniwe/cbcs/loki:/etc/loki
+    ports:
+      - "3100:3100"
+    restart: unless-stopped
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - loki
+  promtail:
+    image: grafana/promtail:2.4.0
+    volumes:
+      - /var/log:/var/log
+      - /Users/emmanuel.egbuniwe/cbcs/promtail:/etc/promtail
+      ports:
+        - "1514:1514"
+    restart: unless-stopped
+    command: -config.file=/etc/promtail/promtail-config.yml
+    networks:
+      - loki
+  grafana:
+    image: grafana/grafana:latest
+    user: "1000"
+    volumes:
+    - /Users/emmanuel.egbuniwe/cbcs/grafana:/var/lib/grafana
+    ports:
+      - "2500:3000"
+    restart: unless-stopped
+    networks:
+      - loki
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+#Working D-COMPOSE PROM-GRAFANA-LOKI without promatail ports exposing 
+
+version: "3"
+networks:
+  loki:
+services:
+  loki:
+    image: grafana/loki:2.4.0
+    volumes:
+      - /Users/emmanuel.egbuniwe/cbcs/loki:/etc/loki
+    ports:
+      - "3100:3100"
+    restart: unless-stopped
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - loki
+  promtail:
+    image: grafana/promtail:2.4.0
+    volumes:
+      - /var/log:/var/log
+      - /Users/emmanuel.egbuniwe/cbcs/promtail:/etc/promtail
+    # ports:
+    #   - "1514:1514" # this is only needed if you are going to send syslogs
+    restart: unless-stopped
+    command: -config.file=/etc/promtail/promtail-config.yml
+    networks:
+      - loki
+  grafana:
+    image: grafana/grafana:latest
+    user: "1000"
+    volumes:
+    - /Users/emmanuel.egbuniwe/cbcs/grafana:/var/lib/grafana
+    ports:
+      - "2500:3000"
+    restart: unless-stopped
+    networks:
+      - loki
+         
+         
+         
+         
+         
+#EXPOSING PROMTAIL PORTS -WORKS FINE
+     
+     version: "3"
+networks:
+  loki:
+services:
+  loki:
+    image: grafana/loki:2.4.0
+    volumes:
+      - /Users/emmanuel.egbuniwe/cbcs/loki:/etc/loki
+    ports:
+      - "3100:3100"
+    restart: unless-stopped
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - loki
+  promtail:
+    image: grafana/promtail:2.4.0
+    volumes:
+      - /var/log:/var/log
+      - /Users/emmanuel.egbuniwe/cbcs/promtail:/etc/promtail
+    ports:
+      - "2018:1514"
+    restart: unless-stopped
+    command: -config.file=/etc/promtail/promtail-config.yml
+    networks:
+      - loki
+  grafana:
+    image: grafana/grafana:latest
+    user: "1000"
+    volumes:
+    - /Users/emmanuel.egbuniwe/cbcs/grafana:/var/lib/grafana
+    ports:
+      - "2500:3000"
+    restart: unless-stopped
+    networks:
+      - loki    
+         
