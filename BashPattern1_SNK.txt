@@ -1,0 +1,71 @@
+﻿#!/bin/bash
+CURRENTDATE=`date +"%Y-%m-%d"`
+echo Today date is=${CURRENTDATE}
+echo Looking for today file www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 200 response codes for file:www${CURRENTDATE}.txt
+#awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 200
+echo "I am not listing to reduce amount of lines per Slack limit"
+echo Completed listing 200 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 500 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 500
+echo Completed listing 500 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 501 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 501
+echo Completed listing 501 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 502 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 502
+echo Completed listing 502 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 503 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 503
+echo Completed listing 503 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 504 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 504
+echo Completed listing 504 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 505 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 505
+echo Completed listing 505 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 506 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 506
+echo Completed listing 506 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 507 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 507
+echo Completed listing 507 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 508 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 508
+echo Completed listing 508 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 509 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 509
+echo Completed listing 509 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 510 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 510
+echo Completed listing 510 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
+
+echo Start listing 511 response codes for file:www${CURRENTDATE}.txt
+awk '{print $3 " " $4 " " $5 " " $6 " " $12}' www${CURRENTDATE}.txt | grep 511
+echo Completed listing 511 response codes for file:www${CURRENTDATE}.txt
+echo "#####"
